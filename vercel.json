@@ -1,9 +1,0 @@
-{
-  "version": 2,
-  "builds": [
-    { "src": "api/forms.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/forms/(.*)", "dest": "/api/forms.js" }
-  ]
-}
