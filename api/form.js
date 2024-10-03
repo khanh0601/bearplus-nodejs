@@ -2,10 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const formRoutes = require('../routes/routerForm');
 const auth = require('../routes/auth');
+const cors = require('cors'); 
+
 
 const app = express();
-const port = 3000;
 
+const corsOptions = {
+    origin: 'https://caskxchange-bp.webflow.io',  // Thay bằng URL của frontend bạn
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 // Middleware để parse body
 app.use(bodyParser.json());
 
