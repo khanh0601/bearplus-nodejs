@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 
 // Định tuyến cho form
 app.use('/api/forms', formRoutes);
+app.use('/api/auth', auth);
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
