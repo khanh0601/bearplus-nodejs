@@ -4,6 +4,7 @@ const formRoutes = require('../routes/routerForm');
 const auth = require('../routes/auth');
 
 const app = express();
+const port = 3000;
 
 // Middleware để parse body
 app.use(bodyParser.json());
