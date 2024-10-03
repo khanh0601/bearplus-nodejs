@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const formRoutes = require('../routes/routerForm');
-const serverless = require('serverless-http');  // Thêm serverless-http để chuyển Express thành serverless
 
 const app = express();
+const port = 3000;
 
 // Middleware để parse body
 app.use(bodyParser.json());
@@ -11,5 +11,6 @@ app.use(bodyParser.json());
 // Định tuyến cho form
 app.use('/api/forms', formRoutes);
 
-// Export ra serverless function
-module.exports.handler = serverless(app);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
