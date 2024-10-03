@@ -1,4 +1,23 @@
 {
-  "source": "/feedback/:id",
-  "destination": "/api/feedback/:id"
+  "version": 2,
+  "name": "bearplus-nodejs",
+  "builds": [
+    {
+      "src": "api/form.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["db.js"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/form.js",
+      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+  ]
 }
