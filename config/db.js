@@ -1,18 +1,23 @@
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 
-const connection = mysql.createConnection({
-    host: 'localhost',  // Địa chỉ MySQL server
-    user: 'root',       // Tên người dùng MySQL
-    password: 'khanhkhanh123',       // Mật khẩu MySQL (nếu có)
-    database: 'bearplus'  // Tên database
-});
+// PostgreSQL connection string from Neon
+const connectionString = 'postgresql://neondb_owner:5Tpj0FIDQULx@ep-snowy-dream-a5vq38u5.us-east-2.aws.neon.tech/neondb?sslmode=require';
 
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to MySQL:', err);
-        return;
+// Create a new Pool instance with the connection string
+const pool = new Pool({
+    connectionString: connectionString,
+    ssl: {
+        rejectUnauthorized: false, // Disable SSL certificate verification
     }
-    console.log('Connected to MySQL');
 });
 
-module.exports = connection;
+// Connect to the PostgreSQL database
+pool.connect((err, client, release) => {
+    if (err) {
+        return console.error('Error acquiring client', err.stack);
+    }
+    console.log('Connected to PostgreSQL');
+    release(); // Release the client back to the pool
+});
+
+module.exports = pool;
