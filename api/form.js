@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const formRoutes = require('../routes/routerForm');
+const serverless = require('serverless-http');  // Thêm serverless-http để chuyển Express thành serverless
 
 const app = express();
 
@@ -10,5 +11,5 @@ app.use(bodyParser.json());
 // Định tuyến cho form
 app.use('/api/forms', formRoutes);
 
-// Xuất `app` để Vercel sử dụng như một serverless function
-module.exports = app;
+// Export ra serverless function
+module.exports.handler = serverless(app);
