@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node api/form.js"
+    "build": "netlify deploy --prod"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,7 @@
     "http": "^0.0.1-security",
     "mysql": "^2.18.1",
     "mysql2": "^3.11.3",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "serverless-http": "^3.2.0"
   }
 }
