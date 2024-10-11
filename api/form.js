@@ -6,9 +6,9 @@ const cors = require('cors');
 
 
 const app = express();
-
+let domain =['https://caskxchange-bp.webflow.io','https://caskxchange-bp.webflow.io' ]
 const corsOptions = {
-    origin: 'https://caskxchange-bp.webflow.io',  // Thay bằng URL của frontend bạn
+    origin: domain,  // Thay bằng URL của frontend bạn
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
